@@ -3,10 +3,14 @@
 # =============================================================================
 # Required environment variables (must be passed to docker run)
 # - GIT_REPO_URL: The URI to clone the git repository
-# - GIT_REPO_NAME: The name of the git repo.
 # =============================================================================
 
 APP_DIR=/app;
+
+if [ -z "$GIT_REPO_URL" ]; then
+  echo "GIT_REPO_URL env variable is required. exiting.";
+  exit 1;
+fi
 
 # Clone the git repo
 echo "Cloning git repository $GIT_REPO_URL ..."
